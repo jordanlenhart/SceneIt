@@ -22,7 +22,7 @@ const Search = () => {
           )}&api_key=${API_KEY}&language=en-US&page=1`
         );
         const data = await res.json();
-        console.log("TMDB response:", data); 
+        console.log("TMDB response:", data); // 👀 check this in devtools
         setResults(data.results || []);
       } catch (err) {
         console.error("Error fetching search results:", err);
@@ -35,7 +35,8 @@ const Search = () => {
   }, [query]);
 
   return (
-    <div className="p-6 text-white">
+  <div className="bg-primary min-h-screen text-white"> 
+    <div className="max-w-7xl mx-auto px-6 py-8">
       <h1 className="text-2xl font-bold mb-4">
         Showing results for "{query}"
       </h1>
@@ -51,6 +52,7 @@ const Search = () => {
           <ShowCard key={show.id} show={show} />
         ))}
       </div>
+    </div>
     </div>
   );
 };

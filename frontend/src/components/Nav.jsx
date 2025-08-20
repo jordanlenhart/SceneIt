@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, Menu, X } from 'lucide-react';
 import RegisterModal from './Register'; // import your modal
 import { Link } from 'react-router-dom';
+import SearchBar from "./SearchBar";
 
 
 const Nav = () => {
@@ -71,21 +72,9 @@ const Nav = () => {
             </div>
 
             {/* Search Bar */}
-            <div className="hidden md:block">
-              <div className="relative">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearchSubmit(e)}
-                  placeholder="Search"
-                  className="bg-primary border text-white placeholder-gray-300 rounded-full px-4 py-2 pl-10 w-64 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-200"
-                />
-                <Search
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300 w-4 h-4"
-                />
-              </div>
-            </div>
+                <div className="hidden md:block">
+            <SearchBar placeholder="Search" />
+          </div>
 
             {/* Mobile menu button */}
             <div className="md:hidden">
@@ -104,17 +93,7 @@ const Nav = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-700">
               <div className="relative mb-4 px-3">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearchSubmit(e)}
-                  placeholder="Search"
-                  className="bg-slate-600 text-white placeholder-gray-300 rounded-full px-4 py-2 pl-10 w-full focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-200"
-                />
-                <Search
-                  className="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-300 w-4 h-4"
-                />
+               <SearchBar placeholder="Search" />
               </div>
               <a
                 href="#"

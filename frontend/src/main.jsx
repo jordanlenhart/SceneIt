@@ -7,6 +7,7 @@ import Nav from "./components/Nav.jsx";
 import Home from "./pages/Home.jsx";
 // import Shows from "./pages/Shows.jsx";
 // import Playlists from "./pages/Playlists.jsx";
+import Search from "./pages/Search.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/" element={<Home />} />
         {/* <Route path="/shows" element={<Shows />} />
         <Route path="/playlists" element={<Playlists />} /> */}
+        <Route path="/search" element={<Search />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

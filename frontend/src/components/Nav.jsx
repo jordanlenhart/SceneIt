@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { Search, Menu, X } from 'lucide-react';
 import RegisterModal from './Register'; // import your modal
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchBar from "./SearchBar";
 
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false); // modal state
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    console.log('Search query:', searchQuery);
+  const handleSearch = (query) => {
+    if (!query.trim()) return;
+    navigate(`/search?query=${encodeURIComponent(query.trim())}`);
+    setIsMenuOpen(false);
   };
 
   const openModal = () => {
@@ -73,7 +74,7 @@ const Nav = () => {
 
             {/* Search Bar */}
                 <div className="hidden md:block">
-            <SearchBar placeholder="Search" />
+            <SearchBar placeholder="Search" onSearch={handleSearch} />
           </div>
 
             {/* Mobile menu button */}
@@ -93,7 +94,7 @@ const Nav = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-700">
               <div className="relative mb-4 px-3">
-               <SearchBar placeholder="Search" />
+               <SearchBar placeholder="Search" onSearch={handleSearch} />
               </div>
               <a
                 href="#"
